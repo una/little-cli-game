@@ -1,0 +1,23 @@
+{
+  "pwd": "show present working directory",
+  "cd": "change directory",
+  "ls": "list directory",
+  "-l": "long/detailed format",
+  "-a": "include hidden files",
+  "chmod": "change permissions",
+  "cp": "copy a file",
+  "mv": "move or rename a file",
+  "rm": "delete a file",
+  "-r": "recursive - affect all items within a directory",
+  "mkdir": "create a directory",
+  "cat": "paste a file into another file all at once",
+  "more": "paste a file into another file line-by-line",
+  "vi": "use vi editor",
+  "emacs": "use emacs editor",
+  "head": "show first few lines of a file",
+  "-n": "specify number flag",
+  "tail": "show last few lines of a file",
+  "find": "search for a file",
+  "tar": "tape archive - read/write archives",
+  "man": "show manual page"
+}

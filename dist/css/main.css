@@ -9,3 +9,34 @@ html, body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
+
+.u-center {
+  text-align: center; }
+
+body {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.25rem;
+  padding: .5em;
+  max-width: 36em;
+  margin: 0 auto; }
+
+h1, h2 {
+  font-family: 'Candal', sans-serif;
+  text-align: center; }
+
+::-moz-selection {
+  background-color: deeppink;
+  color: white; }
+
+::selection {
+  background-color: deeppink;
+  color: white; }
+
+#game--entry {
+  display: block;
+  width: 100%;
+  font-size: 2em;
+  min-height: 1.5em;
+  height: auto;
+  text-align: center;
+  border: 1px solid deeppink; }

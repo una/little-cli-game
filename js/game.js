@@ -42,10 +42,12 @@
       const dataArray = [... Object.values(data)];
       let activeEntry = [];
       let currentPattern = '';
+      let currentCmdName = '';
 
       function nextEntry() {
         let randomItem = dataArray[randomizeValue(data)];
         $gameDef.innerHTML = randomItem.desc;
+        currentCmdName = randomItem.command;
         currentPattern = randomItem.keyBinding.join();
       }
 
@@ -72,6 +74,9 @@
         }
 
         if (activeEntry.join().includes(cancelPattern)) {
+          // show answers in console to check afterward
+          console.log('action: ' + $gameDef.innerHTML, '\ncommand: ' + currentCmdName);
+          // clear for new entry
           activeEntry = [];
           newGameItem();
         } else if (activeEntry.join().includes(currentPattern)) {
@@ -79,8 +84,6 @@
           updatePoints(points);
           newGameItem();
         }
-
-        console.log(activeEntry, activeEntry.join(), activeEntry.join().includes(cancelPattern));
       }
 
       // init keydown function
@@ -88,4 +91,10 @@
 
     }
   });
+
+  // after 30 seconds, modal overlay with tweet link and your score
+  // can be done in CSS
+
+  // TODO:
+  // add unicorns that pop in when you get it right and some color
 })();

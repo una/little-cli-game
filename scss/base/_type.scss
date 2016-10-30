@@ -1,0 +1,31 @@
+$accent-color: deeppink;
+
+body {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.25rem;
+  padding: .5em;
+  max-width: 36em;
+  margin: 0 auto;
+}
+
+h1, h2 {
+  font-family: 'Candal', sans-serif;
+  text-align: center;
+}
+
+::selection {
+  background-color: $accent-color;
+  color: white;
+}
+
+#game--entry {
+  display: block;
+  width: 100%;
+  font-size: 2em;
+  min-height: 1.5em;
+  height: auto;
+  text-align: center;
+  border: 1px solid $accent-color;
+}
+
+// #TODO -- add fonts to the page

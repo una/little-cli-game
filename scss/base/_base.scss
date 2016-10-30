@@ -9,7 +9,8 @@ html, body {
 
 .main {
   display: flex;
-  // @media (max-width: $breakpoint--mobile) {
-  //   flex-direction: column;
-  // }
+}
+
+.u-center {
+  text-align: center;
 }

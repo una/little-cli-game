@@ -1,0 +1,86 @@
+{
+  "pwd": { 
+    "desc": "show present working directory",
+    "keyBinding": [80, 87, 68]
+  },
+  "cd": {
+    "desc": "change directory",
+    "keyBinding": [67, 68]
+  },
+  "ls": {
+    "desc": "list directory",
+    "keyBinding": [76, 83]
+  },
+  "-l": {
+    "desc": "long/detailed format",
+    "keyBinding": [189, 76]
+  },
+  "-a": {
+    "desc":"include hidden files",
+    "keyBinding": [189, 65]
+  },
+  "chmod": {
+    "desc": "change permissions",
+    "keyBinding": [67, 72, 77, 79, 68]
+  },
+  "cp": {
+    "desc": "copy a file",
+    "keyBinding": [67, 80]
+  },
+  "mv": {
+    "desc": "move or rename a file",
+    "keyBinding": [77, 86]
+  },
+  "rm": {
+    "desc": "delete a file",
+    "keyBinding": [82, 87]
+  },
+  "-r": {
+    "desc": "recursive - affect all items within a directory",
+    "keyBinding": [189, 82]
+  },
+  "mkdir": {
+    "desc": "create a directory",
+    "keyBinding": [77, 75, 68, 73, 82]
+  },
+  "cat": {
+    "desc": "paste a file into another file all at once",
+    "keyBinding": [67, 65, 84]
+  },
+  "more": {
+    "desc": "paste a file into another file line-by-line",
+    "keyBinding": [77, 79, 82, 69]
+  },
+  "vi": {
+    "desc": "use vi editor",
+    "keyBinding": [86, 73]
+  },
+  "emacs": {
+    "desc": "use emacs editor",
+    "keyBinding": [69, 77, 65, 67, 83]
+  },
+  "head": {
+    "desc": "show first few lines of a file",
+    "keyBinding": [72, 69, 65, 68]
+  },
+  "-n": {
+    "desc": "specify number flag",
+    "keyBinding": [189, 78]
+  },
+  "tail": {
+    "desc": "show last few lines of a file",
+    "keyBinding": [84, 65, 73, 76]
+  },
+  "find": {
+    "desc": "search for a file",
+    "keyBinding": [84, 65, 73, 76]
+  },
+  "tar": {
+    "desc": "tape archive - read/write archives",
+    "keyBinding": [84, 65, 82]
+  },
+  "man": {
+    "desc": "show manual page",
+    "keyBinding": [77, 65, 78]
+  }
+}

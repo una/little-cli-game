@@ -1,6 +1,7 @@
 (function() {
   const $gameDef = document.getElementById('game--def');
   const $gameEntry = document.getElementById('game--entry');
+  const cancelPattern = '17,67';
 
   // getJSON function
   const getJSON = function(url, callback) {
@@ -32,19 +33,39 @@
 
       // TODO: ADD ES6 Transpilation Support
       const dataArray = [... Object.values(data)];
-      let randomItem = dataArray[randomizeValue(data)];
+      let activeEntry = [];
+      let currentPattern = '';
 
-      $gameDef.innerHTML = randomItem.desc;
+      function nextEntry() {
+        let randomItem = dataArray[randomizeValue(data)];
+        $gameDef.innerHTML = randomItem.desc;
+        currentPattern = randomItem.keyBinding.join();
+      }
 
+      nextEntry()
+      
       // for every keydown, check to see if the answer is complete yet, or if ctrl+c was clicked to skip it
       // show entries typing out 
       // if complete, they get a point
-      document.addEventListener('keydown', function() {
-        randomItem = dataArray[randomizeValue(data)];
 
-        $gameDef.innerHTML = randomItem.desc;
-      })
-      
+      function checkKey(e) {
+        e = e || window.event;
+        activeEntry.push(e.keyCode);
+        $gameEntry.innerHTML += e.key;
+
+        if (activeEntry.join().includes(cancelPattern)) {
+          activeEntry = [];
+          $gameEntry.innerHTML = '';
+          randomItem = dataArray[randomizeValue(data)]
+          nextEntry();
+        }
+        
+        console.log(activeEntry, activeEntry.join(), activeEntry.join().includes(cancelPattern));
+      }
+
+      // init keydown function
+      document.onkeydown = checkKey;
+
     }
   });
 })();

@@ -1,7 +1,9 @@
 (function() {
   const $gameDef = document.getElementById('game--def');
   const $gameEntry = document.getElementById('game--entry');
+  const $gamePoints = document.getElementById('game--points');
   const cancelPattern = '17,67';
+  let points = 0;
 
   // getJSON function
   const getJSON = function(url, callback) {
@@ -23,6 +25,11 @@
   function randomizeValue(input) {
     const randomPickVal = Math.floor(Math.random() * Object.keys(input).length);
     return randomPickVal;
+  }
+
+  // Display points data
+  function updatePoints(points) {
+    $gamePoints.innerHTML = points;
   }
 
   // Get Game Questions
@@ -48,18 +55,31 @@
       // show entries typing out 
       // if complete, they get a point
 
+      function newGameItem() {
+        $gameEntry.innerHTML = '';
+        randomItem = dataArray[randomizeValue(data)]
+        nextEntry();
+      }
+
       function checkKey(e) {
         e = e || window.event;
         activeEntry.push(e.keyCode);
         $gameEntry.innerHTML += e.key;
 
+        // backspace to clear entry
+        if (e.keyCode === 8) {
+          $gameEntry.innerHTML = '';
+        }
+
         if (activeEntry.join().includes(cancelPattern)) {
           activeEntry = [];
-          $gameEntry.innerHTML = '';
-          randomItem = dataArray[randomizeValue(data)]
-          nextEntry();
+          newGameItem();
+        } else if (activeEntry.join().includes(currentPattern)) {
+          points++;
+          updatePoints(points);
+          newGameItem();
         }
-        
+
         console.log(activeEntry, activeEntry.join(), activeEntry.join().includes(cancelPattern));
       }
 

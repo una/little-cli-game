@@ -2,6 +2,7 @@
   const $gameDef = document.getElementById('game--def');
   const $gameEntry = document.getElementById('game--entry');
   const $gamePoints = document.getElementById('game--points');
+  const $gameTimer = document.getElementById('game--timer');
   const cancelPattern = '17,67';
   let points = 0;
 
@@ -97,4 +98,30 @@
 
   // TODO:
   // add unicorns that pop in when you get it right and some color
+
+  // Start Game and counter
+
+  let started = false;
+
+  window.onkeydown = function() {
+    if(!started) {
+      started = true;
+      $gameEntry.classList = '';
+
+      let counter = 20;
+      
+      var countdownTimer = setInterval(function() {
+        counter--;
+        if(counter <= 0) {
+            document.body.classList += 'game-over';
+            window.clearInterval(countdownTimer)
+            return;
+        } else {
+            $gameTimer.innerHTML = counter.toString();
+        }
+      }, 1000);
+      
+      // setTimeout(function(){document.body.classList += 'game-over'}, 30000, "1");
+    }
+  };
 })();

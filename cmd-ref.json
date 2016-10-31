@@ -20,7 +20,7 @@
     "keyBinding": [189, 76]
   },
   "-a": {
-    "desc":"include hidden files",
+    "desc":"include hidden files flag",
     "command": "-a",
     "keyBinding": [189, 65]
   },
@@ -42,10 +42,10 @@
   "rm": {
     "desc": "delete a file",
     "command": "rm",
-    "keyBinding": [82, 87]
+    "keyBinding": [82, 77]
   },
   "-r": {
-    "desc": "recursive - affect all items within a directory",
+    "desc": "recursive flag (affect all items within a directory)",
     "command": "-r",
     "keyBinding": [189, 82]
   },

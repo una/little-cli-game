@@ -33,7 +33,7 @@
   },
   "rm": {
     "desc": "delete a file",
-    "keyBinding": [82, 87]
+    "keyBinding": [82, 77]
   },
   "-r": {
     "desc": "recursive - affect all items within a directory",

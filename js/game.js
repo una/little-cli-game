@@ -1,9 +1,11 @@
 (function() {
+  const sanitizeHtml = require('sanitize-html');
   const $gameDef = document.getElementById('game--def');
   const $gameEntry = document.getElementById('game--entry');
   const $gamePoints = document.getElementById('game--points');
   const $gameTimer = document.getElementById('game--timer');
   const $bg = document.getElementById('background');
+  const $twitterShare = document.querySelector('.twitter-share-button');
   const cancelPattern = '17,67';
   let points = 0;
 
@@ -78,6 +80,7 @@
         if (activeEntry.join().includes(cancelPattern)) {
           // show answers in console to check afterward
           console.log('action: ' + $gameDef.innerHTML, '\ncommand: ' + currentCmdName);
+          
           // clear for new entry
           activeEntry = [];
           newGameItem();
@@ -96,15 +99,8 @@
 
       // init keydown function
       document.onkeydown = checkKey;
-
     }
   });
-
-  // after 30 seconds, modal overlay with tweet link and your score
-  // can be done in CSS
-
-  // TODO:
-  // add unicorns that pop in when you get it right and some color
 
   // Start Game and counter
 
@@ -115,27 +111,24 @@
       started = true;
       $gameEntry.classList = '';
 
-      let counter = 30;
+      let counter = 3;
       
       var countdownTimer = setInterval(function() {
         counter--;
         if(counter <= 0) {
-            document.body.classList += 'game-over';
-            window.clearInterval(countdownTimer);
+          document.body.classList += 'game-over';
+          window.clearInterval(countdownTimer);
 
-            var tweetBtn = document.createElement("a");
-            tweetBtn.innerHTML = `<a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet?text=Hello%20world"
-  data-size="large">
-Tweet</a>`;
-            document.body.appendChild(tweetBtn);
+          let tweetText = sanitizeHtml('I got ' + points + ' points in 30 seconds playing the Little Unix CLI Game by @una! ' + window.location.href);
 
+          debugger;
+
+          $twitterShare.setAttribute('href', 'https://twitter.com/intent/tweet?text=I%20got%20' + points + '%20points%playing%20the%20Unix%20CLI%20Game%20by%20@Una%20')
+          $twitterShare.style.display = "inline-block";
         } else {
-            $gameTimer.innerHTML = counter.toString();
+          $gameTimer.innerHTML = counter.toString();
         }
       }, 1000);
-      
-      // setTimeout(function(){document.body.classList += 'game-over'}, 30000, "1");
     }
   };
 })();

@@ -16,10 +16,17 @@ body {
           align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
-          justify-content: center; }
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  @media (max-width: 600px) {
+    body {
+      display: block;
+      font-size: .9em; } }
 
 #background {
-  content: '';
   background-color: #00ffc4;
   position: absolute;
   height: 100vh;
@@ -37,12 +44,25 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background-color: white;
-  max-width: 36em;
+  width: 36em;
   margin: 0 auto;
   padding: 2em;
   max-width: 36em;
-  height: auto;
   border: 4px solid #222; }
+  @media (max-width: 600px) {
+    .container {
+      -webkit-box-pack: start;
+          -ms-flex-pack: start;
+              justify-content: flex-start;
+      -webkit-box-align: start;
+          -ms-flex-align: start;
+              align-items: flex-start;
+      width: 100%; } }
+
+footer {
+  width: 100%;
+  text-align: center;
+  margin-top: 1em; }
 
 @-webkit-keyframes rainbowize {
   from {
@@ -62,6 +82,9 @@ body {
 
 body {
   font-family: 'Space Mono', monospace; }
+
+footer {
+  display: block; }
 
 h1, h2 {
   font-family: 'Candal', sans-serif;
@@ -103,3 +126,7 @@ h1, h2 {
   color: lightgray; }
   .pre-game:after {
     content: 'just start typing!'; }
+
+.twitter-share-button {
+  display: none;
+  width: 100%; }

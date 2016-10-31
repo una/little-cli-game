@@ -15,10 +15,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+
+  @media (max-width: 600px) {
+    display: block;
+    font-size: .9em
+  }
 }
 
 #background {
-  content: '';
   background-color: $accent-color;
   position: absolute;
   height: 100vh;
@@ -34,12 +39,23 @@ body {
   justify-content: center;
   align-items: center;
   background-color: white;
-  max-width: 36em;
+  width: 36em;
   margin: 0 auto;
   padding: 2em;
   max-width: 36em;
-  height: auto;
   border: 4px solid #222;
+
+  @media (max-width: 600px) {
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+  }
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  margin-top: 1em;
 }
 
 @keyframes rainbowize {

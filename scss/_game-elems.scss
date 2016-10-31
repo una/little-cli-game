@@ -1,4 +1,4 @@
-.points {
+#points-area {
   text-align: center;
   
   .game-over & {
@@ -13,9 +13,13 @@
   }
 }
 
+#game--timer {
+  text-align: center;
+}
+
 .pre-game {
   color: lightgray;
   &:after {
-    content: 'type commands here!'
+    content: 'just start typing!'
   }
 }

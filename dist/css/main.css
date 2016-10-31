@@ -3,30 +3,76 @@
 
 html, body {
   width: 100%;
-  height: 100%; }
-
-.main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
+  height: 100%;
+  padding: 0;
+  margin: 0; }
 
 body {
-  font-family: 'Space Mono', monospace;
-  font-size: 1.25rem;
-  padding: .5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+#background {
+  content: '';
+  background-color: #00ffc4;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1; }
+  #background.rainbow-roll {
+    -webkit-animation: rainbowize .5s ease-in-out;
+            animation: rainbowize .5s ease-in-out; }
+
+.container {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
   max-width: 36em;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding: 2em;
+  max-width: 36em;
+  height: auto;
+  border: 4px solid #222; }
+
+@-webkit-keyframes rainbowize {
+  from {
+    -webkit-filter: hue-rotate(0) saturate(0);
+            filter: hue-rotate(0) saturate(0); }
+  from {
+    -webkit-filter: hue-rotate(360deg) saturate(1.3);
+            filter: hue-rotate(360deg) saturate(1.3); } }
+
+@keyframes rainbowize {
+  from {
+    -webkit-filter: hue-rotate(0) saturate(0);
+            filter: hue-rotate(0) saturate(0); }
+  from {
+    -webkit-filter: hue-rotate(360deg) saturate(1.3);
+            filter: hue-rotate(360deg) saturate(1.3); } }
+
+body {
+  font-family: 'Space Mono', monospace; }
 
 h1, h2 {
   font-family: 'Candal', sans-serif;
   text-align: center; }
 
 ::-moz-selection {
-  background-color: deeppink;
+  background-color: #00ffc4;
   color: white; }
 
 ::selection {
-  background-color: deeppink;
+  background-color: #00ffc4;
   color: white; }
 
 #game--entry {
@@ -36,11 +82,11 @@ h1, h2 {
   min-height: 1.5em;
   height: auto;
   text-align: center;
-  border: 1px solid deeppink; }
+  background: #f9f9f9; }
 
-.points {
+#points-area {
   text-align: center; }
-  .game-over .points {
+  .game-over #points-area {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -50,7 +96,10 @@ h1, h2 {
     left: 0;
     background-color: hotpink; }
 
+#game--timer {
+  text-align: center; }
+
 .pre-game {
   color: lightgray; }
   .pre-game:after {
-    content: 'type commands here!'; }
+    content: 'just start typing!'; }

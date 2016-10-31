@@ -1,11 +1,5 @@
-$accent-color: deeppink;
-
 body {
   font-family: 'Space Mono', monospace;
-  font-size: 1.25rem;
-  padding: .5em;
-  max-width: 36em;
-  margin: 0 auto;
 }
 
 h1, h2 {
@@ -25,7 +19,7 @@ h1, h2 {
   min-height: 1.5em;
   height: auto;
   text-align: center;
-  border: 1px solid $accent-color;
+  background: #f9f9f9;
 }
 
 // #TODO -- add fonts to the page

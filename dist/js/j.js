@@ -3,6 +3,7 @@
   const $gameEntry = document.getElementById('game--entry');
   const $gamePoints = document.getElementById('game--points');
   const $gameTimer = document.getElementById('game--timer');
+  const $bg = document.getElementById('background');
   const cancelPattern = '17,67';
   let points = 0;
 
@@ -83,6 +84,12 @@
         } else if (activeEntry.join().includes(currentPattern)) {
           points++;
           updatePoints(points);
+
+          $bg.classList.add('rainbow-roll');
+          window.setTimeout(function() {
+            $bg.classList.remove('rainbow-roll');
+          }, 800);
+
           newGameItem();
         }
       }
@@ -108,14 +115,21 @@
       started = true;
       $gameEntry.classList = '';
 
-      let counter = 20;
+      let counter = 30;
       
       var countdownTimer = setInterval(function() {
         counter--;
         if(counter <= 0) {
             document.body.classList += 'game-over';
-            window.clearInterval(countdownTimer)
-            return;
+            window.clearInterval(countdownTimer);
+
+            var tweetBtn = document.createElement("a");
+            tweetBtn.innerHTML = `<a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?text=Hello%20world"
+  data-size="large">
+Tweet</a>`;
+            document.body.appendChild(tweetBtn);
+
         } else {
             $gameTimer.innerHTML = counter.toString();
         }

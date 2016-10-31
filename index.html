@@ -6,14 +6,16 @@
   <link rel="stylesheet" href="css/main.min.css">
 </head>
 <body>
-  <h1>Command Line Game</h1>
-  <p>Actions will flash on the screen! You have 30 seconds to enter the correct terminal commands and try to get as many as possible. Use `backspace` to clear typos, and<kbd>ctrl</kbd>+<kbd>C</kbd> to skip to the next one! Missed answers will appear in your console.</p>
+  <div id="background"></div>
+  <main class="container">
+    <h1>Unix Unicorns!</h1>
+    <p>Do you know your command line functions?! You have 30 seconds to enter the correct terminal commands and try to get as many as possible. Use `backspace` to clear typos, and<kbd>ctrl</kbd>+<kbd>C</kbd> to skip to the next one! Missed answers will appear in your console.</p>
 
-  <h2 id="game--def"></h2>
-  <p id="game--entry" class="pre-game"></p>
-  <p id="game--timer">ready, set, go!</p>
-  <p class="u-center points"><span id="game--points">0</span> points</p>
-
+    <h2 id="game--def"></h2>
+    <p id="game--entry" class="pre-game"></p>
+    <p id="game--timer">ready, set...!</p>
+    <p  id="points-area" class="u-center"><span id="game--points">0</span> points</p>
+  </main>
 </body>
 <script src="js/j.js"></script>
 </html>

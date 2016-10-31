@@ -1,3 +1,5 @@
+$accent-color: #00ffc4;
+
 * {
   box-sizing: border-box;
 }
@@ -5,8 +7,46 @@
 html, body {
   width: 100%;
   height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
-.main {
+body {
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#background {
+  content: '';
+  background-color: $accent-color;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+
+  &.rainbow-roll {
+    animation: rainbowize .5s ease-in-out;
+  }
+}
+
+.container {
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  max-width: 36em;
+  margin: 0 auto;
+  padding: 2em;
+  max-width: 36em;
+  height: auto;
+  border: 4px solid #222;
+}
+
+@keyframes rainbowize {
+  from {
+    filter: hue-rotate(0) saturate(0);
+  }
+  from {
+    filter: hue-rotate(360deg) saturate(1.3);
+  }
 }

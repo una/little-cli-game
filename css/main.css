@@ -33,7 +33,9 @@ body {
   position: absolute;
   height: 100vh;
   width: 100vw;
-  z-index: -1; }
+  z-index: -1;
+  top: 0;
+  left: 0; }
   #background.rainbow-roll {
     -webkit-animation: rainbowize .75s ease-in-out;
             animation: rainbowize .75s ease-in-out; }

@@ -73,7 +73,7 @@
   },
   "find": {
     "desc": "search for a file",
-    "keyBinding": [84, 65, 73, 76]
+    "keyBinding": [70, 73, 78, 68]
   },
   "tar": {
     "desc": "tape archive - read/write archives",

@@ -126,7 +126,7 @@
           document.body.classList += 'game-over';
           window.clearInterval(countdownTimer);
 
-          let tweetText = sanitizeTweet('I got ' + points + ' points in 30 seconds playing a little Unix CLI Game by @una! ' + window.location.href);
+          let tweetText = sanitizeTweet('I got ' + points + ' points in 30 seconds playing a little CLI game by @una! ' + window.location.href);
 
           $twitterShare.setAttribute('href', 'https://twitter.com/intent/tweet?text=' + tweetText);
           $twitterShare.style.display = "inline-block";

@@ -16,6 +16,7 @@ var gulp = require('gulp'),
   pngquant = require('imagemin-pngquant'),
   plumber = require('gulp-plumber'),
   deploy = require('gulp-gh-pages'),
+  babel = require('gulp-babel'),
   notify = require('gulp-notify');
 
 
@@ -71,7 +72,9 @@ gulp.task('deploy', function () {
 
 gulp.task('js', function () {
   gulp.src('js/*.js')
-    // .pipe(uglify())
+    .pipe(babel({
+      presets: ['es2015']
+    }))
     .pipe(size({
       gzip: true,
       showFiles: true

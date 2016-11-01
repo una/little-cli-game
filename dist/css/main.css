@@ -28,13 +28,15 @@ body {
 
 #background {
   background-color: #00ffc4;
+  background: -webkit-linear-gradient(135deg, #B3FFAB, #12FFF7);
+  background: linear-gradient(-45deg, #B3FFAB, #12FFF7);
   position: absolute;
   height: 100vh;
   width: 100vw;
   z-index: -1; }
   #background.rainbow-roll {
-    -webkit-animation: rainbowize .5s ease-in-out;
-            animation: rainbowize .5s ease-in-out; }
+    -webkit-animation: rainbowize .75s ease-in-out;
+            animation: rainbowize .75s ease-in-out; }
 
 .container {
   -webkit-box-pack: center;
@@ -90,13 +92,14 @@ h1, h2 {
   font-family: 'Candal', sans-serif;
   text-align: center; }
 
+a {
+  color: #004af1; }
+
 ::-moz-selection {
-  background-color: #00ffc4;
-  color: white; }
+  background-color: #00ffc4; }
 
 ::selection {
-  background-color: #00ffc4;
-  color: white; }
+  background-color: #00ffc4; }
 
 #game--entry {
   display: block;
@@ -117,16 +120,17 @@ h1, h2 {
     font-size: 2em;
     padding-top: 5em;
     left: 0;
-    background-color: hotpink; }
+    background-color: #00ffc4; }
 
 #game--timer {
   text-align: center; }
 
 .pre-game {
-  color: lightgray; }
+  color: #bbb; }
   .pre-game:after {
-    content: 'just start typing!'; }
+    content: 'start typing to play!'; }
 
-.twitter-share-button {
+.twitter-share-button,
+.play-again {
   display: none;
   width: 100%; }

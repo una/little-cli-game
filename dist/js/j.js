@@ -1,21 +1,25 @@
-(function() {
-  const sanitizeHtml = require('sanitize-html');
-  const $gameDef = document.getElementById('game--def');
-  const $gameEntry = document.getElementById('game--entry');
-  const $gamePoints = document.getElementById('game--points');
-  const $gameTimer = document.getElementById('game--timer');
-  const $bg = document.getElementById('background');
-  const $twitterShare = document.querySelector('.twitter-share-button');
-  const cancelPattern = '17,67';
-  let points = 0;
+'use strict';
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+(function () {
+  var $gameDef = document.getElementById('game--def');
+  var $gameEntry = document.getElementById('game--entry');
+  var $gamePoints = document.getElementById('game--points');
+  var $gameTimer = document.getElementById('game--timer');
+  var $bg = document.getElementById('background');
+  var $twitterShare = document.querySelector('.twitter-share-button');
+  var $replayBtn = document.querySelector('.play-again');
+  var cancelPattern = '17,67';
+  var points = 0;
 
   // getJSON function
-  const getJSON = function(url, callback) {
-    let xhr = new XMLHttpRequest();
+  var getJSON = function getJSON(url, callback) {
+    var xhr = new XMLHttpRequest();
     xhr.open("get", url, true);
     xhr.responseType = "json";
-    xhr.onload = function() {
-      let status = xhr.status;
+    xhr.onload = function () {
+      var status = xhr.status;
       if (status === 200) {
         callback(null, xhr.response);
       } else {
@@ -27,7 +31,7 @@
 
   // Get random data
   function randomizeValue(input) {
-    const randomPickVal = Math.floor(Math.random() * Object.keys(input).length);
+    var randomPickVal = Math.floor(Math.random() * Object.keys(input).length);
     return randomPickVal;
   }
 
@@ -36,99 +40,110 @@
     $gamePoints.innerHTML = points;
   }
 
+  // Sanitize Utility
+  function sanitizeTweet(input) {
+    input = input.replace(/&/g, '&amp;');
+    input = input.replace(/ /g, '%20');
+    input = input.replace(/:/g, '%3A');
+    input = input.replace(/\//g, '%2F');
+    return input;
+  }
+
   // Get Game Questions
-  getJSON('./cmd-ref.json', function(err, data) {
+  getJSON('./cmd-ref.json', function (err, data) {
     if (err != null) {
-      return ('Something went wrong :(');
+      return 'Something went wrong :(';
     } else {
-
-      // TODO: ADD ES6 Transpilation Support
-      const dataArray = [... Object.values(data)];
-      let activeEntry = [];
-      let currentPattern = '';
-      let currentCmdName = '';
-
-      function nextEntry() {
-        let randomItem = dataArray[randomizeValue(data)];
-        $gameDef.innerHTML = randomItem.desc;
-        currentCmdName = randomItem.command;
-        currentPattern = randomItem.keyBinding.join();
-      }
-
-      nextEntry()
-      
-      // for every keydown, check to see if the answer is complete yet, or if ctrl+c was clicked to skip it
-      // show entries typing out 
-      // if complete, they get a point
-
-      function newGameItem() {
-        $gameEntry.innerHTML = '';
-        randomItem = dataArray[randomizeValue(data)]
-        nextEntry();
-      }
-
-      function checkKey(e) {
-        e = e || window.event;
-        activeEntry.push(e.keyCode);
-        $gameEntry.innerHTML += e.key;
-
-        // backspace to clear entry
-        if (e.keyCode === 8) {
-          $gameEntry.innerHTML = '';
-        }
-
-        if (activeEntry.join().includes(cancelPattern)) {
-          // show answers in console to check afterward
-          console.log('action: ' + $gameDef.innerHTML, '\ncommand: ' + currentCmdName);
-          
-          // clear for new entry
+      (function () {
+        var nextEntry = function nextEntry() {
+          var randomItem = dataArray[randomizeValue(data)];
+          $gameDef.innerHTML = randomItem.desc;
+          currentCmdName = randomItem.command;
+          currentPattern = randomItem.keyBinding.join();
           activeEntry = [];
-          newGameItem();
-        } else if (activeEntry.join().includes(currentPattern)) {
-          points++;
-          updatePoints(points);
+        };
 
-          $bg.classList.add('rainbow-roll');
-          window.setTimeout(function() {
-            $bg.classList.remove('rainbow-roll');
-          }, 800);
+        // for every keydown, check to see if the answer is complete yet, or if ctrl+c was clicked to skip it
 
-          newGameItem();
-        }
-      }
+        var newGameItem = function newGameItem() {
+          $gameEntry.innerHTML = '';
+          nextEntry();
+        };
 
-      // init keydown function
-      document.onkeydown = checkKey;
+        var checkKey = function checkKey(e) {
+          e = e || window.event;
+          activeEntry.push(e.keyCode);
+          $gameEntry.innerHTML += e.key;
+
+          // backspace to clear entry
+          if (e.keyCode === 8) {
+            $gameEntry.innerHTML = '';
+          }
+
+          if (activeEntry.join().includes(cancelPattern)) {
+            // show answers in console to check afterward
+            console.log('action: ' + $gameDef.innerHTML, '\ncommand: ' + currentCmdName);
+
+            // clear for new entry
+            activeEntry = [];
+            newGameItem();
+          } else if (activeEntry.join().includes(currentPattern)) {
+            points++;
+            updatePoints(points);
+
+            $bg.classList.add('rainbow-roll');
+            window.setTimeout(function () {
+              $bg.classList.remove('rainbow-roll');
+            }, 800);
+
+            newGameItem();
+          }
+        };
+
+        // init keydown function
+
+
+        // TODO: ADD ES6 Transpilation Support
+        var dataArray = [].concat(_toConsumableArray(Object.values(data)));
+        var activeEntry = [];
+        var currentPattern = '';
+        var currentCmdName = '';
+
+        nextEntry();document.onkeydown = checkKey;
+      })();
     }
   });
 
   // Start Game and counter
 
-  let started = false;
+  var started = false;
 
-  window.onkeydown = function() {
-    if(!started) {
-      started = true;
-      $gameEntry.classList = '';
+  window.onkeydown = function () {
+    if (!started) {
+      var countdownTimer;
 
-      let counter = 3;
-      
-      var countdownTimer = setInterval(function() {
-        counter--;
-        if(counter <= 0) {
-          document.body.classList += 'game-over';
-          window.clearInterval(countdownTimer);
+      (function () {
+        started = true;
+        $gameEntry.classList = '';
 
-          let tweetText = sanitizeHtml('I got ' + points + ' points in 30 seconds playing the Little Unix CLI Game by @una! ' + window.location.href);
+        var counter = 30;
 
-          debugger;
+        countdownTimer = setInterval(function () {
+          counter--;
+          if (counter <= 0) {
+            document.body.classList += 'game-over';
+            window.clearInterval(countdownTimer);
 
-          $twitterShare.setAttribute('href', 'https://twitter.com/intent/tweet?text=I%20got%20' + points + '%20points%playing%20the%20Unix%20CLI%20Game%20by%20@Una%20')
-          $twitterShare.style.display = "inline-block";
-        } else {
-          $gameTimer.innerHTML = counter.toString();
-        }
-      }, 1000);
+            var tweetText = sanitizeTweet('I got ' + points + ' points in 30 seconds playing a little Unix CLI Game by @una! ' + window.location.href);
+
+            $twitterShare.setAttribute('href', 'https://twitter.com/intent/tweet?text=' + tweetText);
+            $twitterShare.style.display = "inline-block";
+            $replayBtn.style.display = "inline-block";
+          } else {
+            $gameTimer.innerHTML = counter.toString();
+          }
+        }, 1000);
+      })();
     }
   };
 })();

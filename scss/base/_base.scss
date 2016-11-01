@@ -25,13 +25,14 @@ body {
 
 #background {
   background-color: $accent-color;
+  background: linear-gradient(-45deg, #B3FFAB , #12FFF7);
   position: absolute;
   height: 100vh;
   width: 100vw;
   z-index: -1;
 
   &.rainbow-roll {
-    animation: rainbowize .5s ease-in-out;
+    animation: rainbowize .75s ease-in-out;
   }
 }
 

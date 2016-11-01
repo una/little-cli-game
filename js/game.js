@@ -1,11 +1,11 @@
 (function() {
-  const sanitizeHtml = require('sanitize-html');
   const $gameDef = document.getElementById('game--def');
   const $gameEntry = document.getElementById('game--entry');
   const $gamePoints = document.getElementById('game--points');
   const $gameTimer = document.getElementById('game--timer');
   const $bg = document.getElementById('background');
   const $twitterShare = document.querySelector('.twitter-share-button');
+  const $replayBtn = document.querySelector('.play-again');
   const cancelPattern = '17,67';
   let points = 0;
 
@@ -36,6 +36,15 @@
     $gamePoints.innerHTML = points;
   }
 
+  // Sanitize Utility
+  function sanitizeTweet(input) {
+    input = input.replace(/&/g, '&amp;');
+    input = input.replace(/ /g, '%20');
+    input = input.replace(/:/g, '%3A');
+    input = input.replace(/\//g, '%2F');
+    return input;
+  }
+
   // Get Game Questions
   getJSON('./cmd-ref.json', function(err, data) {
     if (err != null) {
@@ -53,17 +62,15 @@
         $gameDef.innerHTML = randomItem.desc;
         currentCmdName = randomItem.command;
         currentPattern = randomItem.keyBinding.join();
+        activeEntry = [];
       }
 
       nextEntry()
       
       // for every keydown, check to see if the answer is complete yet, or if ctrl+c was clicked to skip it
-      // show entries typing out 
-      // if complete, they get a point
 
       function newGameItem() {
         $gameEntry.innerHTML = '';
-        randomItem = dataArray[randomizeValue(data)]
         nextEntry();
       }
 
@@ -111,7 +118,7 @@
       started = true;
       $gameEntry.classList = '';
 
-      let counter = 3;
+      let counter = 30;
       
       var countdownTimer = setInterval(function() {
         counter--;
@@ -119,12 +126,12 @@
           document.body.classList += 'game-over';
           window.clearInterval(countdownTimer);
 
-          let tweetText = sanitizeHtml('I got ' + points + ' points in 30 seconds playing the Little Unix CLI Game by @una! ' + window.location.href);
+          let tweetText = sanitizeTweet('I got ' + points + ' points in 30 seconds playing a little Unix CLI Game by @una! ' + window.location.href);
 
-          debugger;
-
-          $twitterShare.setAttribute('href', 'https://twitter.com/intent/tweet?text=I%20got%20' + points + '%20points%playing%20the%20Unix%20CLI%20Game%20by%20@Una%20')
+          $twitterShare.setAttribute('href', 'https://twitter.com/intent/tweet?text=' + tweetText);
           $twitterShare.style.display = "inline-block";
+          $replayBtn.style.display = "inline-block";
+
         } else {
           $gameTimer.innerHTML = counter.toString();
         }

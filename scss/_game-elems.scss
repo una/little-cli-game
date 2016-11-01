@@ -9,7 +9,7 @@
     font-size: 2em;
     padding-top: 5em;
     left: 0;
-    background-color: hotpink;
+    background-color: $accent-color;
   }
 }
 
@@ -18,13 +18,14 @@
 }
 
 .pre-game {
-  color: lightgray;
+  color: #bbb;
   &:after {
-    content: 'just start typing!'
+    content: 'start typing to play!'
   }
 }
 
-.twitter-share-button {
+.twitter-share-button,
+.play-again {
   display: none;
   width: 100%;
 }

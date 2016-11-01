@@ -134,7 +134,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
             document.body.classList += 'game-over';
             window.clearInterval(countdownTimer);
 
-            var tweetText = sanitizeTweet('I got ' + points + ' points in 30 seconds playing a little Unix CLI Game by @una! ' + window.location.href);
+            var tweetText = sanitizeTweet('I got ' + points + ' points in 30 seconds playing a little CLI game by @una! ' + window.location.href);
 
             $twitterShare.setAttribute('href', 'https://twitter.com/intent/tweet?text=' + tweetText);
             $twitterShare.style.display = "inline-block";

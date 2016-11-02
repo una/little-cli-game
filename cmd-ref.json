@@ -109,7 +109,7 @@
     "command": "touch",
     "keyBinding": [84, 79, 85, 67, 72]
   },
-    "rmdir": {
+  "rmdir": {
 	"desc": "delete directory",
 	"command": "rmdir",
 	"keyBinding": [82,77,68,73,82]	

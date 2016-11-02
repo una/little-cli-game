@@ -108,10 +108,5 @@
     "desc": "create new empty file",
     "command": "touch",
     "keyBinding": [84, 79, 85, 67, 72]
-  }, 
-  ">>": {
-    "desc": "append results of a command to a file",
-    "command": ">>",
-    "keyBinding": [39, 39]
   }
 }

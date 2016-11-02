@@ -92,7 +92,7 @@
   "find": {
     "desc": "search for a file",
     "command": "find",
-    "keyBinding": [70, 73, 78, 68]
+    "keyBinding": [84, 65, 73, 76]
   },
   "tar": {
     "desc": "tape archive - read/write archives",
@@ -103,5 +103,40 @@
     "desc": "show manual page",
     "command": "man",
     "keyBinding": [77, 65, 78]
+  },
+    "rmdir": {
+	"desc": "delete directory",
+	"command": "rmdir",
+	"keyBinding": [82,77,68,73,82]	
+  },
+  "whatis": {
+	"desc": "search the whatis database for keywords",
+	"command": "whatis",
+	"keyBinding": [87,72,65,84,73,83]	
+  },
+  "date": {
+	"desc": "display date",
+	"command": "date",
+	"keyBinding": [68,65,84,69]	
+  },
+  "clear": {
+	"desc": "clear screen",
+	"command": "clear",
+	"keyBinding": [67,76,69,65,82]	
+  },
+  "sudo": {
+	"desc": "root keyword",
+	"command": "sudo",
+	"keyBinding": [83,85,68,79]	
+  },
+  "passwd": {
+	"desc": "change password",
+	"command": "passwd",
+	"keyBinding": [80,65,83,83,87,68]	
+  },
+  "grep": {
+	"desc": "search files for a string or regex",
+	"command": "grep",
+	"keyBinding": [71,82,69,80]	
   }
 }

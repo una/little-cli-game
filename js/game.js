@@ -37,12 +37,12 @@
   }
 
   // Sanitize Utility
-  function sanitizeTweet(input) {
-    input = input.replace(/&/g, '&amp;');
-    input = input.replace(/ /g, '%20');
-    input = input.replace(/:/g, '%3A');
-    input = input.replace(/\//g, '%2F');
-    return input;
+  function sanitizeTweet(text) {
+    text = text.replace(/&/g, '&amp;');
+    text = text.replace(/ /g, '%20');
+    text = text.replace(/:/g, '%3A');
+    text = text.replace(/\//g, '%2F');
+    return text;
   }
 
   // Get Game Questions

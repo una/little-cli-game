@@ -75,6 +75,7 @@
       }
 
       function checkKey(e) {
+        if (finished) return;
         e = e || window.event;
         activeEntry.push(e.keyCode);
         $gameEntry.innerHTML += e.key;
@@ -112,6 +113,7 @@
   // Start Game and counter
 
   let started = false;
+  let finished = false;
 
   window.onkeydown = function() {
     if(!started) {
@@ -123,6 +125,7 @@
       var countdownTimer = setInterval(function() {
         counter--;
         if(counter <= 0) {
+          finished = true;
           document.body.classList += 'game-over';
           window.clearInterval(countdownTimer);
 

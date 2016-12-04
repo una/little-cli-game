@@ -57,24 +57,24 @@
       let currentPattern = '';
       let currentCmdName = '';
 
-      function nextEntry() {
+      const nextEntry = function() {
         let randomItem = dataArray[randomizeValue(data)];
         $gameDef.innerHTML = randomItem.desc;
         currentCmdName = randomItem.command;
         currentPattern = randomItem.keyBinding.join();
         activeEntry = [];
-      }
+      };
 
-      nextEntry()
+      nextEntry();
       
       // for every keydown, check to see if the answer is complete yet, or if ctrl+c was clicked to skip it
 
-      function newGameItem() {
+      const newGameItem = function() {
         $gameEntry.innerHTML = '';
         nextEntry();
-      }
+      };
 
-      function checkKey(e) {
+      const checkKey = function(e) {
         e = e || window.event;
         activeEntry.push(e.keyCode);
         $gameEntry.innerHTML += e.key;
@@ -102,7 +102,7 @@
 
           newGameItem();
         }
-      }
+      };
 
       // init keydown function
       document.onkeydown = checkKey;

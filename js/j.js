@@ -60,6 +60,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           $gameDef.innerHTML = randomItem.desc;
           currentCmdName = randomItem.command;
           currentPattern = randomItem.keyBinding.join();
+
+          // The alt binding provides support for browsers when they have different key codes for the same key
+          altCurrentPattern = randomItem.altBinding ? randomItem.altBinding.join() : '';
           activeEntry = [];
         };
 
@@ -71,6 +74,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         };
 
         var checkKey = function checkKey(e) {
+          if (finished) return;
           e = e || window.event;
           activeEntry.push(e.keyCode);
           $gameEntry.innerHTML += e.key;
@@ -87,7 +91,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
             // clear for new entry
             activeEntry = [];
             newGameItem();
-          } else if (activeEntry.join().includes(currentPattern)) {
+          } else if (activeEntry.join().includes(currentPattern) || altCurrentPattern != "" && activeEntry.join().includes(altCurrentPattern)) {
             points++;
             updatePoints(points);
 
@@ -107,6 +111,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         var dataArray = [].concat(_toConsumableArray(Object.values(data)));
         var activeEntry = [];
         var currentPattern = '';
+        var altCurrentPattern = '';
         var currentCmdName = '';
 
         nextEntry();document.onkeydown = checkKey;
@@ -117,6 +122,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   // Start Game and counter
 
   var started = false;
+  var finished = false;
 
   window.onkeydown = function () {
     if (!started) {
@@ -124,13 +130,14 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
       (function () {
         started = true;
-        $gameEntry.classList = '';
+        $gameEntry.classList.remove('pre-game');
 
         var counter = 30;
 
         countdownTimer = setInterval(function () {
           counter--;
           if (counter <= 0) {
+            finished = true;
             document.body.classList += 'game-over';
             window.clearInterval(countdownTimer);
 

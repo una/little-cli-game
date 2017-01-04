@@ -69,13 +69,8 @@
         activeEntry = [];
       };
 
-<<<<<<< HEAD
       nextEntry();
-      
-=======
-      nextEntry()
 
->>>>>>> e50f1c475e02c614335edb3d9c5ae1b46564e421
       // for every keydown, check to see if the answer is complete yet, or if ctrl+c was clicked to skip it
 
       const newGameItem = function() {
@@ -83,11 +78,7 @@
         nextEntry();
       };
 
-<<<<<<< HEAD
       const checkKey = function(e) {
-=======
-      function checkKey(e) {
->>>>>>> e50f1c475e02c614335edb3d9c5ae1b46564e421
         if (finished) return;
         e = e || window.event;
         activeEntry.push(e.keyCode);

@@ -55,6 +55,7 @@
       const dataArray = [... Object.values(data)];
       let activeEntry = [];
       let currentPattern = '';
+      let altCurrentPattern = '';
       let currentCmdName = '';
 
       function nextEntry() {
@@ -62,11 +63,14 @@
         $gameDef.innerHTML = randomItem.desc;
         currentCmdName = randomItem.command;
         currentPattern = randomItem.keyBinding.join();
+
+        // The alt binding provides support for browsers when they have different key codes for the same key
+        altCurrentPattern = (randomItem.altBinding) ? randomItem.altBinding.join() : '';
         activeEntry = [];
       }
 
       nextEntry()
-      
+
       // for every keydown, check to see if the answer is complete yet, or if ctrl+c was clicked to skip it
 
       function newGameItem() {
@@ -87,11 +91,11 @@
         if (activeEntry.join().includes(cancelPattern)) {
           // show answers in console to check afterward
           console.log('action: ' + $gameDef.innerHTML, '\ncommand: ' + currentCmdName);
-          
+
           // clear for new entry
           activeEntry = [];
           newGameItem();
-        } else if (activeEntry.join().includes(currentPattern)) {
+        } else if (activeEntry.join().includes(currentPattern) || (altCurrentPattern != "" && activeEntry.join().includes(altCurrentPattern))) {
           points++;
           updatePoints(points);
 
@@ -116,10 +120,10 @@
   window.onkeydown = function() {
     if(!started) {
       started = true;
-      $gameEntry.classList = '';
+      $gameEntry.classList.remove('pre-game');
 
       let counter = 30;
-      
+
       var countdownTimer = setInterval(function() {
         counter--;
         if(counter <= 0) {

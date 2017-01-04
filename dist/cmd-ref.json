@@ -1,5 +1,5 @@
 {
-  "pwd": { 
+  "pwd": {
     "desc": "show present working directory",
     "command": "pwd",
     "keyBinding": [80, 87, 68]
@@ -17,12 +17,14 @@
   "-l": {
     "desc": "long/detailed format",
     "command": "-l",
-    "keyBinding": [189, 76]
+    "keyBinding": [189, 76],
+    "altBinding": [173, 76]
   },
   "-a": {
     "desc":"include hidden files flag",
     "command": "-a",
-    "keyBinding": [189, 65]
+    "keyBinding": [189, 65],
+    "altBinding": [173, 65]
   },
   "chmod": {
     "desc": "change permissions",
@@ -47,7 +49,8 @@
   "-r": {
     "desc": "recursive flag (affect all items within a directory)",
     "command": "-r",
-    "keyBinding": [189, 82]
+    "keyBinding": [189, 82],
+    "altBinding": [173, 82]
   },
   "mkdir": {
     "desc": "create a directory",
@@ -82,7 +85,8 @@
   "-n": {
     "desc": "specify number flag",
     "command": "-n",
-    "keyBinding": [189, 78]
+    "keyBinding": [189, 78],
+    "altBinding": [173, 78]
   },
   "tail": {
     "desc": "show last few lines of a file",
@@ -104,39 +108,44 @@
     "command": "man",
     "keyBinding": [77, 65, 78]
   },
+  "touch": {
+    "desc": "create new empty file",
+    "command": "touch",
+    "keyBinding": [84, 79, 85, 67, 72]
+  },
   "rmdir": {
-    "desc": "delete directory",
-    "command": "rmdir",
-    "keyBinding": [82,77,68,73,82]	
+  	"desc": "delete directory",
+  	"command": "rmdir",
+  	"keyBinding": [82,77,68,73,82]
   },
   "whatis": {
-    "desc": "search the whatis database for keywords",
-    "command": "whatis",
-    "keyBinding": [87,72,65,84,73,83]	
+  	"desc": "search the whatis database for keywords",
+  	"command": "whatis",
+  	"keyBinding": [87,72,65,84,73,83]
   },
   "date": {
-    "desc": "display date",
-    "command": "date",
-    "keyBinding": [68,65,84,69]	
+  	"desc": "display date",
+  	"command": "date",
+  	"keyBinding": [68,65,84,69]
   },
   "clear": {
-    "desc": "clear screen",
-    "command": "clear",
-    "keyBinding": [67,76,69,65,82]	
+  	"desc": "clear screen",
+  	"command": "clear",
+  	"keyBinding": [67,76,69,65,82]
   },
   "sudo": {
-    "desc": "root keyword",
-    "command": "sudo",
-    "keyBinding": [83,85,68,79]	
+  	"desc": "root keyword",
+  	"command": "sudo",
+  	"keyBinding": [83,85,68,79]	
   },
   "passwd": {
-    "desc": "change password",
-    "command": "passwd",
-    "keyBinding": [80,65,83,83,87,68]	
+  	"desc": "change password",
+  	"command": "passwd",
+  	"keyBinding": [80,65,83,83,87,68]
   },
   "grep": {
-    "desc": "search files for a string or regex",
-    "command": "grep",
-    "keyBinding": [71,82,69,80]	
+  	"desc": "search files for a string or regex",
+  	"command": "grep",
+  	"keyBinding": [71,82,69,80]
   }
 }

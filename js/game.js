@@ -58,7 +58,7 @@
       let altCurrentPattern = '';
       let currentCmdName = '';
 
-      function nextEntry() {
+      const nextEntry = function() {
         let randomItem = dataArray[randomizeValue(data)];
         $gameDef.innerHTML = randomItem.desc;
         currentCmdName = randomItem.command;
@@ -67,18 +67,18 @@
         // The alt binding provides support for browsers when they have different key codes for the same key
         altCurrentPattern = (randomItem.altBinding) ? randomItem.altBinding.join() : '';
         activeEntry = [];
-      }
+      };
 
-      nextEntry()
+      nextEntry();
 
       // for every keydown, check to see if the answer is complete yet, or if ctrl+c was clicked to skip it
 
-      function newGameItem() {
+      const newGameItem = function() {
         $gameEntry.innerHTML = '';
         nextEntry();
-      }
+      };
 
-      function checkKey(e) {
+      const checkKey = function(e) {
         if (finished) return;
         e = e || window.event;
         activeEntry.push(e.keyCode);
@@ -107,7 +107,7 @@
 
           newGameItem();
         }
-      }
+      };
 
       // init keydown function
       document.onkeydown = checkKey;
